@@ -3,7 +3,7 @@ import { ProductContext } from "./ProductCard";
 // Styles and Assets
 import styles from '../styles/styles.module.css';
 
-interface Props {
+export interface Props {
   className?: string;
 }
 
