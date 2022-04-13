@@ -5,6 +5,8 @@ import {
   ProductImage, 
   ProductTitle 
 } from "../components"
+import '../styles/custom-styles.css';
+
 
 const product = {
   id: '1',
@@ -23,8 +25,11 @@ export const ShoppingPage = () => {
         flexDirection: 'row',
         flexWrap: 'wrap'
       }}>
-        <ProductCard product={ product }>
-          <ProductImage />
+        <ProductCard 
+          product={ product }
+          className='bg-dark'
+        >
+          <ProductImage  />
           <ProductTitle />
           <ProductButtons />
         </ProductCard>
