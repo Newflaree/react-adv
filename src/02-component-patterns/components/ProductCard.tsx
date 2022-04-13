@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
 // Custom Hooks
 import { useProduct } from '../hooks/useProduct';
 // Interfaces
