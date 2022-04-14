@@ -1,4 +1,5 @@
 // Components
+import { useState } from "react";
 import { 
   ProductButtons, 
   ProductCard, 
@@ -23,7 +24,13 @@ const product2: Product = {
 
 const products: Product[] = [ product1, product2 ];
 
+interface ProductInCart extends Product {
+  count: number
+}
+
 export const ShoppingPage = () => {
+  const [ shoppingCart, setShoppingCart ] = useState<{[ key:string]: ProductInCart}>({});
+
   return (
     <div>
       <h1>Shopping Store</h1>
