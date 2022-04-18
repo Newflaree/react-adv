@@ -14,8 +14,8 @@ export interface Props {
   children?: ReactElement | ReactElement[];
   className?: string;
   style?: CSSProperties;
-  onChange?: ( args: onChangeArgs ) => void;
 	value?: number;
+  onChange?: ( args: onChangeArgs ) => void;
 }
 
 export const ProductCard = ({ 
