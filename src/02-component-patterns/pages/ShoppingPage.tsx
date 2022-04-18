@@ -29,7 +29,7 @@ interface ProductInCart extends Product {
 }
 
 export const ShoppingPage = () => {
-  const [ shoppingCart, setShoppingCart ] = useState<{[ key:string]: ProductInCart}>({});
+  const [ shoppingCart, setShoppingCart ] = useState<{[ key:string ]: ProductInCart}>({});
 
   const onProductCountChange = ({ count, product }: { count: number, product: Product }) => {
 		setShoppingCart( oldShoppingCart => {
