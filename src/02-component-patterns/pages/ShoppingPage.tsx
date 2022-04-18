@@ -82,6 +82,7 @@ export const ShoppingPage = () => {
           		style={{ 
             		width: '100px'
           		}}
+							value={ product.count }
         		>
           		<ProductImage className='custom-image' />
 							<ProductButtons 
