@@ -31,18 +31,20 @@ interface ProductInCart extends Product {
 export const ShoppingPage = () => {
   const [ shoppingCart, setShoppingCart ] = useState<{[ key:string ]: ProductInCart}>({});
 
-  const onProductCountChange = ({ count, product }: { count: number, product: Product }) => {
+	const onProductCountChange = ({ count, product }: { count: number, product: Product }) => {
 		setShoppingCart( oldShoppingCart => {
-			if ( count === 0 ) {
-				const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+			const productIncart: ProductInCart = oldShoppingCart[ product.id ] || { ...product, count: 0 };
 
-				return { ...rest }
+			if ( Math.max( productIncart.count + count, 0 ) > 0 ) {
+				productIncart.count += count;
+				return {
+					...oldShoppingCart,
+					[ product.id ]: productIncart
+				}
 			}
 
-			return {
-				...oldShoppingCart,
-				[ product.id ]: { ...product, count }
-			}
+			const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+			return { ...rest }
 		})
   }
 
