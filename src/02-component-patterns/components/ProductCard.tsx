@@ -11,7 +11,8 @@ const { Provider } = ProductContext;
 
 export interface Props {
   product: Product;
-  children?: ReactElement | ReactElement[];
+  //children?: ReactElement | ReactElement[];
+  children: () => JSX.Element;
   className?: string;
   style?: CSSProperties;
 	value?: number;
@@ -41,7 +42,7 @@ export const ProductCard = ({
         style={ style }
         className={ `${ styles.productCard} ${ className }` }
       >
-        { children }
+        { children() }
       </div>
     </Provider>
   );

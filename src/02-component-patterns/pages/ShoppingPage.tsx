@@ -29,9 +29,15 @@ export const ShoppingPage = () => {
           maxCount: 10
 				}}
       >
-        <ProductImage className='custom-image' />
-        <ProductTitle className='text-white text-bold' />
-        <ProductButtons className="custom-buttons" />
+        {
+          (): any => {
+            <>
+              <ProductImage className='custom-image' />
+              <ProductTitle className='text-white text-bold' />
+              <ProductButtons className="custom-buttons" />
+            </>
+          }
+        }
       </ProductCard>
     </div>
   )
