@@ -8,25 +8,31 @@ interface userProductArgs {
 	initialValues?: InitialValues;
 }
 
-export const useProduct = ({ onChange, product, value = 0, initialValues }: userProductArgs ) => {
+export const useProduct = ( { onChange, product, value = 0, initialValues }: userProductArgs ) => {
   const [ counter, setCounter ] = useState<number>( initialValues?.count || value );
-	const isControlled = useRef( !!onChange )
+	const isMounted = useRef( false );
+
+	console.log( initialValues?.count );
 
   const increaseBy = ( value: number ) => {
-		if ( isControlled.current ) {
-			return onChange!({ count: value, product })
-		}
+	  let newValue = Math.max( counter + value, 0 );
+    if ( initialValues?.maxCount ) {
+      newValue = Math.min( newValue, initialValues.maxCount );
+    }
 
-		const newValue = Math.max( counter + value, 0 );
     setCounter( newValue );
-
     onChange && onChange({ count: newValue, product });
   }
 
 	useEffect( () => {
-		setCounter( value );
+		if ( !isMounted.current ) return;
 
+		setCounter( value );
 	}, [ value ]);
+
+	useEffect( () => {
+		isMounted.current = true;
+	}, [] );
 
   return {
     counter, 
